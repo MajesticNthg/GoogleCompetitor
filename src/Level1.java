@@ -25,7 +25,8 @@ public class Level1 {
                     word_start = x;
                 } else
                     x = word_start;
-            }
+            } else if (flag < len && x == s.length() - 1)
+                string_count++;
         }
         return string_count;
     }
@@ -93,6 +94,7 @@ public class Level1 {
         }
         return WordSearch;
     }
+
 
 }
 
