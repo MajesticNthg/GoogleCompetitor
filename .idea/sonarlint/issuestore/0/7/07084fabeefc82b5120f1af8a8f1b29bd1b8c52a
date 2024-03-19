@@ -1,27 +1,33 @@
 
-t	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(õ·ç´8°Íîå1
-t	java:S1270"XRefactor the code in order to not assign to this loop counter from within the loop body.(İ–›ñ8°Íîå1
-y	java:S127C"XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8±Íîå1
-l	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÈ^8±Íîå1
-r	java:S117
-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İßÛ’şÿÿÿÿ8±Íîå1
-r	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢Å´›ûÿÿÿÿ8±Íîå1
-r	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌË£ùùÿÿÿÿ8±Íîå1
+y	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8ûÿ’¾å1
+y	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8ûÿ’¾å1
+y	java:S127#"XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8ûÿ’¾å1
+y	java:S127."XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8ûÿ’¾å1
+y	java:S1274"XRefactor the code in order to not assign to this loop counter from within the loop body.(º´ªËüÿÿÿÿ8ûÿ’¾å1
+r	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„áíüÿÿÿÿ8ûÿ’¾å1
+m	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü€8ûÿ’¾å1
 7
-java:S1220""Move this file to a named package.8³Íîå1
+java:S1220""Move this file to a named package.8üÿ’¾å1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(ØìŠüÿÿÿÿ8²¿øå1
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü˜–Ãùÿÿÿÿ8ãÑîå1
+java:S1118":Add a private constructor to hide the implicit public one.(ØìŠüÿÿÿÿ8‘Ï™¾å1
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ä•ûÿÿÿÿ8€“¾å1
 t
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ü˜–Ãùÿÿÿÿ8äÑîå1
-o	java:S100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ä•ûÿÿÿÿ8ïÑîå1
->
-java:S1110V"!Remove these useless parentheses.(Ğ¨ı8“Òîå1
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8˜Òîå1
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(¦ä•ûÿÿÿÿ8€“¾å1
+W
+java:S1854":Remove this useless assignment to local variable "empty1".(¾¥µ 8‘€“¾å1
+W
+java:S1854":Remove this useless assignment to local variable "string".(Ñ¾şÖ8‘€“¾å1
+T
+java:S1854B"7Remove this useless assignment to local variable "vvv".(ÑÂÂâ8‘€“¾å1
+T
+java:S1854@"8Remove this useless assignment to local variable "test".(ö³ÇJ8Ã—™¾å1
+E
+java:S1481B"(Remove this unused "vvv" local variable.(ÑÂÂâ8¡€“¾å1
 O
-java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8˜Òîå1
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8Î—™¾å1
 S
-java:S1128"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿ8˜Òîå1
+java:S1128"1Remove this unused import 'java.util.Collection'.(¹ÉĞšùÿÿÿÿ8Î—™¾å1
 M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8˜Òîå1
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Î—™¾å1
+è
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 75 to 64, Complexity from 36 to 14, Nesting Level from 3 to 2, Number of Variables from 15 to 6.(¦ä•ûÿÿÿÿ8ª€“¾å1

@@ -4,99 +4,99 @@ import java.util.Collection;
 import java.util.List;
 
 public class Level1 {
-    public static int StringCount (int len, String s) {
-        int flag = 0;
-        int string_count = 0;
-        int word_start = 0;
-
-        for (int x = 0; x < s.length(); x++, flag++) {
-            if (x == 0 && s.length() > 0 && s.charAt(x) != ' ') {
-                word_start = x;
-            }
-            if (x != 0 && s.charAt(x - 1) == ' ' && s.charAt(x) != ' ') {
-                word_start = x;
-            }
-            if (x != 0 && s.charAt(x - 1) != ' ' && s.charAt(x) != ' ' && (x - word_start >= (len - 1)))
-                word_start = x - 1;
-            if (flag > len) {
-                string_count++;
-                flag = 0;
-                if (x - word_start >= (len - 1) && s.charAt(x + 1) != ' ') {
-                    word_start = x;
-                } else
-                    x = word_start;
-            } else if (flag < len && x == s.length() - 1)
-                string_count++;
-        }
-        return string_count;
-    }
-
-    public static String[] stringOfWords (int len, String s) {
-
+    public static int[] WordSearch(int len, String s, String subs) {
         String[] words = s.split(" ");
-        String[] more_words = new String[StringCount(len, s)];
+        ArrayList<String> massive_words = new ArrayList<>();
 
-        int sum = 0;
-        int y = 0;
+        StringBuilder string = new StringBuilder();
+        StringBuilder empty1 = new StringBuilder();
+        StringBuilder empty2 = new StringBuilder();
 
 
         for (int x = 0; x < words.length; x++) {
-            if (sum == 0 && words[x].length() > len) {
-                more_words[y] = words[x].substring(0, len);
-                more_words[y+1] = words[x].substring(len, words[x].length());
-                sum += words[x].length();
-                x++;
-            }
-            if (sum == 0 && words[x].length() <= len) {
-                if (more_words[y] != null) {
-                    more_words[y] += " " + words[x];
-                    sum += words[x].length();
-                }
-                else {
-                    sum += words[x].length();
-                    more_words[y] = words[x];
-                }
-            }
-            else if (sum != 0 && (sum + words[x].length() + 1 <= len)) {
-                more_words[y] += " " + words[x];
-                sum += words[x].length();
-            }
-            else {
-                y++;
-                sum = 0;
+            string = new StringBuilder();
+            string.insert(0, words[x]);
+            if (string.length() == len && empty2.length() == 0)
+                massive_words.add(words[x]);
+            else if (string.length() == len && empty2.length() > 0) {
+                massive_words.add(empty2.toString());
+                empty2 = new StringBuilder();
                 x--;
+            } else if (string.length() > len && empty2.length() > 0) {
+                if (empty2.length() > len) {
+                    empty1 = new StringBuilder();
+                    empty1.insert(0, empty2.substring(0, len));
+                    massive_words.add(empty1.toString());
+                    empty2.delete(0, len);
+                    x--;
+                } else if (empty2.length() <= len) {
+                    massive_words.add(empty2.toString());
+                    empty2 = new StringBuilder();
+                    x--;
+                }
+            } else if (string.length() > len && empty2.length() == 0) {
+                massive_words.add(words[x].substring(0, len));
+                empty2.insert(0, words[x].substring(len, words[x].length()));
+            } else if (string.length() < len && empty2.length() > 0) {
+                if (empty2.length() > len) {
+                    empty1 = new StringBuilder();
+                    empty1.insert(0, empty2.substring(0, len));
+                    massive_words.add(empty1.toString());
+                    empty2.delete(0, len);
+                    x--;
+                } else if (empty2.length() < len && string.length() + empty2.length() + 1 <= len) {
+                    empty2.append(" " + string);
+                } else if (empty2.length() <= len && string.length() + empty2.length() + 1 > len) {
+                    massive_words.add(empty2.toString());
+                    empty2 = new StringBuilder();
+                    x--;
+                }
+            } else if (string.length() < len && empty2.length() == 0) {
+                empty2.insert(0, string);
+            }
+            if (x == words.length - 1 && empty2.length() > 0) {
+                massive_words.add(empty2.toString());
             }
         }
 
-        return more_words;
-    }
-
-    public static int [] WordSearch(int len, String s, String subs) {
-        int[] WordSearch = new int[StringCount(len, s)];
-
+        int[] WordSearch = new int[massive_words.size()];
         int value = 0;
+        StringBuilder test = new StringBuilder();
+        String[] result = massive_words.toArray(new String[0]);
+        int vvv = subs.length();
+        for (int i = 0; i < result.length; i++) {
+            test = new StringBuilder();
+            test.insert(0, result[i]);
+            value = result[i].indexOf(subs);
 
-        for (int i = 0; i < WordSearch.length; i++) {
-            value = stringOfWords(len, s)[i].indexOf(subs);
-
-            if (value == 0 && (value + subs.length() == stringOfWords(len, s)[i].length()))
+            if (value == 0 && value + subs.length() == test.length())
                 WordSearch[i] = 1;
-            else if (value == 0 && (stringOfWords(len, s)[i].charAt(subs.length()) == ' '))
+            else if (value == 0 && test.charAt(value + subs.length()) == ' ')
                 WordSearch[i] = 1;
-            else if (value > 0 && (stringOfWords(len, s)[i].charAt(value - 1) == ' ') && ((stringOfWords(len, s)[i].charAt(subs.length() + value) == ' ')))
+            else if (value > 0 && value + subs.length() < test.length() && test.charAt(value + subs.length()) == ' ')
                 WordSearch[i] = 1;
-            else if (value > 0 && stringOfWords(len, s)[i].charAt(value - 1) == ' ' && (value + subs.length() == stringOfWords(len, s)[i].length()))
+            else if (value > 0 && value + subs.length() >= test.length() && test.charAt(value + subs.length() - 1) == ' ')
+                WordSearch[i] = 1;
+            else if (value > 0 && value + subs.length() == test.length())
                 WordSearch[i] = 1;
             else
                 WordSearch[i] = 0;
 
-
         }
-        return WordSearch;
+
+            return WordSearch;
+
+
+
     }
 
-
 }
+
+
+
+
+
+
 
 
 
